@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painel</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="d-flex">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar p-3">
+        <h4>🏥 Sistema</h4>
+        <hr>
+
+        <a href="#" class="menu-item">📊 Dashboard</a>
+        <a href="#" class="menu-item">📨 Envios</a>
+        <a href="#" class="menu-item">👥 Pacientes</a>
+        <a href="/logout" class="menu-item">🚪 Sair</a>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div class="content p-4 w-100">
+
+        <h2>📊 Dashboard</h2>
+
+        <!-- CARDS -->
+        <div class="row mb-4">
+
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h6>Total Enviados</h6>
+                    <h3 id="total"></h3>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h6>Confirmados</h6>
+                    <h3 id="confirmados"></h3>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h6>Cancelados</h6>
+                    <h3 id="cancelados"></h3>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- GRÁFICO -->
+        <div class="card p-3 mb-4">
+            <canvas id="grafico"></canvas>
+        </div>
+
+        <!-- ENVIO -->
+        <div class="card p-3 mb-4">
+            <input id="nome" class="form-control mb-2" placeholder="Nome">
+            <input id="telefone" class="form-control mb-2" placeholder="Telefone">
+            <textarea id="mensagem" class="form-control mb-2" placeholder="Mensagem"></textarea>
+
+            <button onclick="enviar()" class="btn btn-success">Enviar</button>
+        </div>
+
+        <!-- TABELA -->
+        <div class="card p-3">
+            <table class="table" id="tabela"></table>
+        </div>
+
+    </div>
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>

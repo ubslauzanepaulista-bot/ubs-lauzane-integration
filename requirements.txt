@@ -1,0 +1,35 @@
+import psycopg2
+import os
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+def conectar():
+    return psycopg2.connect(DATABASE_URL)
+
+def criar_tabelas():
+    conn = conectar()
+    cur = conn.cursor()
+
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS usuarios (
+        id SERIAL PRIMARY KEY,
+        username TEXT UNIQUE,
+        password TEXT,
+        role TEXT
+    )
+    """)
+
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS envios (
+        id SERIAL PRIMARY KEY,
+        usuario TEXT,
+        nome TEXT,
+        telefone TEXT,
+        status TEXT,
+        data TIMESTAMP
+    )
+    """)
+
+    conn.commit()
+    cur.close()
+    conn.close()
